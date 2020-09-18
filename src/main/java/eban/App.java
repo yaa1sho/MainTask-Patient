@@ -25,13 +25,13 @@ public class App
     {
 
 
-        HashSet<String> diagnosis1 = new HashSet<String>();
+        HashSet<String> diagnosis1 = new HashSet<>();
         diagnosis1.add("Бронхит");
 
-        HashSet<String> diagnosis2 = new HashSet<String>();
+        HashSet<String> diagnosis2 = new HashSet<>();
         diagnosis2.add("Амилоидоз печени");
 
-        HashSet<String> diagnosis3 = new HashSet<String>();
+        HashSet<String> diagnosis3 = new HashSet<>();
         diagnosis3.add("Ангина");
 
         List<Patient> patientList = new ArrayList<>();
@@ -49,15 +49,15 @@ public class App
 
         ArrayPatient arrayPatient = new ArrayPatient(patientList);
         System.out.println("Список пациентов: \n");
-        arrayPatient.showPatient();
+        arrayPatient.showPatients();
 
 
         System.out.println("Список пациентов с номером мед.карты в промежутке 3000-4600: \n");
-        new ArrayPatient(arrayPatient.findByMedCard(3000, 4600)).showPatient();
+        new ArrayPatient(arrayPatient.getPatientsWithMedCardInGivenRange(3000, 4600)).showPatients();
 
 
         System.out.println("Список пациентов с Ангиной: \n");
-        new ArrayPatient(arrayPatient.findByDiagnosis("Ангина")).showPatient();
+        new ArrayPatient(arrayPatient.getPatientsWithThisDiagnosis("Ангина")).showPatients();
 
 
 

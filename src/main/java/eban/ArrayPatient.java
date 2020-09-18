@@ -4,38 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayPatient {
-    private List<Patient> arr;
-
-    ArrayPatient(){
-        arr = new ArrayList<>();
-    }
+    private List<Patient> patients;
 
     public ArrayPatient(List<Patient> arr) {
-        this.arr = arr;
+        this.patients = arr;
     }
 
-    public ArrayPatient(ArrayPatient arrayPatient){ this.arr = arrayPatient.arr; }
+    public ArrayPatient(ArrayPatient arrayPatient){ this.patients = arrayPatient.patients; }
 
-    public ArrayPatient findByDiagnosis(String diagnosis){
-        List<Patient> newArr = new ArrayList<>();
-        for (Patient j : arr)
-            if (j.getDiagnosis().contains(diagnosis)) newArr.add(j);
+    public ArrayPatient getPatientsWithThisDiagnosis(String diagnosis){
+        List<Patient> patientsWithThisDiagnosis = new ArrayList<>();
+        for (Patient j : patients)
+            if (j.getDiagnosis().contains(diagnosis)) patientsWithThisDiagnosis.add(j);
 
-        return new ArrayPatient(newArr);
+        return new ArrayPatient(patientsWithThisDiagnosis);
     }
-    public ArrayPatient findByMedCard(final int fNumMedCard, int sNumMedCard){
+    public ArrayPatient getPatientsWithMedCardInGivenRange(final int from, final int before){
 
-        List<Patient> newArr = new ArrayList<>();
-        for (Patient a : arr)
-            if (a.getMedCardNum() > fNumMedCard &&
-                    a.getMedCardNum() < sNumMedCard) newArr.add(a);
+        List<Patient> patientsWithMedCardInGivenRange = new ArrayList<>();
+        for (Patient a : patients)
+            if (a.getMedCardNum() > from &&
+                    a.getMedCardNum() < before) patientsWithMedCardInGivenRange.add(a);
 
-        return new ArrayPatient(newArr);
+        return new ArrayPatient(patientsWithMedCardInGivenRange);
     }
 
-    public void showPatient(){
+    public void showPatients(){
         for (Patient j:
-             arr) {
+                patients) {
             System.out.println(j.toString());
         }
     }

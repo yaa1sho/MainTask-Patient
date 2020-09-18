@@ -17,7 +17,7 @@ public class Patient extends Person{
         address = null;
         phoneNumber = null;
         medCardNum = 0;
-        diagnosis = new HashSet<String>();
+        diagnosis = new HashSet<>();
     }
 
     public Patient(String surname, String name, String patronymic, int id,
@@ -72,17 +72,17 @@ public class Patient extends Person{
 
     @Override
     public String toString() {
-        String res = "Patient{" + "\n" +
-                surname + " " + name + " " + patronymic  +  " \n" +
+        StringBuilder patient = new StringBuilder("Patient{" + "\n" +
+                super.toString() +
                 "id = " + id + "\n" +
                 "address = " + address + "\n" +
                 "phoneNumber = " + phoneNumber + "\n" +
                 "medCardNum = " + medCardNum + "\n" +
-                "diagnosis = { " + "\n";
-        for(String j: diagnosis) res += " " + j + ",\n";
+                "diagnosis = { " + "\n");
+        for(String j: diagnosis) patient.append(" ").append(j).append(",\n");
 
-        res += " }\n}";
-        return res;
+        patient.append(" }\n}");
+        return patient.toString();
     }
 
     public void addDiagnosis(String diagnosis){
