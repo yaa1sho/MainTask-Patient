@@ -2,6 +2,7 @@ package eban;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ArrayPatient {
     private List<Patient> patients;
@@ -19,7 +20,7 @@ public class ArrayPatient {
 
         return new ArrayPatient(patientsWithThisDiagnosis);
     }
-    public ArrayPatient getPatientsWithMedCardInGivenRange(final int from, final int before){
+    public ArrayPatient getPatientsWithMedCardInRange(final int from, final int before){
 
         List<Patient> patientsWithMedCardInGivenRange = new ArrayList<>();
         for (Patient a : patients)
@@ -36,4 +37,16 @@ public class ArrayPatient {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ArrayPatient that = (ArrayPatient) o;
+        return Objects.equals(patients, that.patients);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(patients);
+    }
 }

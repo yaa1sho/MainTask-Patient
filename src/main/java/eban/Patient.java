@@ -1,6 +1,7 @@
 package eban;
 
 import java.util.HashSet;
+import java.util.Objects;
 
 public class Patient extends Person{
 
@@ -83,6 +84,23 @@ public class Patient extends Person{
 
         patient.append(" }\n}");
         return patient.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Patient patient = (Patient) o;
+        return id == patient.id &&
+                medCardNum == patient.medCardNum &&
+                Objects.equals(address, patient.address) &&
+                Objects.equals(phoneNumber, patient.phoneNumber) &&
+                Objects.equals(diagnosis, patient.diagnosis);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, address, phoneNumber, medCardNum, diagnosis);
     }
 
     public void addDiagnosis(String diagnosis){

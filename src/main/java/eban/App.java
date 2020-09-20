@@ -1,6 +1,7 @@
 package eban;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -24,28 +25,18 @@ public class App
     public static void main( String[] args )
     {
 
-
-        HashSet<String> diagnosis1 = new HashSet<>();
-        diagnosis1.add("Бронхит");
-
-        HashSet<String> diagnosis2 = new HashSet<>();
-        diagnosis2.add("Амилоидоз печени");
-
-        HashSet<String> diagnosis3 = new HashSet<>();
-        diagnosis3.add("Ангина");
-
         List<Patient> patientList = new ArrayList<>();
         patientList.add(new Patient("Вишнёв", "Андрей", "Алексеевич",
                 11, "Тверь", "79562341134",
-                4563, diagnosis1));
+                4563, new HashSet<>(Collections.singleton("Бронхит"))));
 
         patientList.add(new Patient("Толкачев", "Артем", "Николаевич",
                 14, "Москва", "79302421694",
-                4752, diagnosis2));
+                4752, new HashSet<>(Collections.singleton("Амилоидоз печени"))));
 
         patientList.add(new Patient("Никулин", "Анатолий", "Сергеевич",
                 34, "Тверь", "79045429431",
-                3442, diagnosis3));
+                3442, new HashSet<>(Collections.singleton("Ангина"))));
 
         ArrayPatient arrayPatient = new ArrayPatient(patientList);
         System.out.println("Список пациентов: \n");
@@ -53,7 +44,7 @@ public class App
 
 
         System.out.println("Список пациентов с номером мед.карты в промежутке 3000-4600: \n");
-        new ArrayPatient(arrayPatient.getPatientsWithMedCardInGivenRange(3000, 4600)).showPatients();
+        new ArrayPatient(arrayPatient.getPatientsWithMedCardInRange(3000, 4600)).showPatients();
 
 
         System.out.println("Список пациентов с Ангиной: \n");
